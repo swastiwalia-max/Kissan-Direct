@@ -9,11 +9,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Listing routes
-const listingRoutes = require("./routes/listingRoutes");
-
-app.use("/api/listings", listingRoutes);
-
 app.get("/", (req, res) => {
     res.json({
         message: "Kissan-Direct API is running"
