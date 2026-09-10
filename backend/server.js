@@ -9,12 +9,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Listing routes
+const listingRoutes = require("./routes/listingRoutes");
+app.use("/api/listings", listingRoutes);
+
+// Order routes
+const orderRoutes = require("./routes/orderRoutes");
+app.use("/api/orders", orderRoutes);
+
+// Home route
 app.get("/", (req, res) => {
     res.json({
         message: "Kissan-Direct API is running"
     });
 });
 
+// Health check
 app.get("/api/health", (req, res) => {
     res.json({
         status: "OK",
