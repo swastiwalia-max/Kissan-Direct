@@ -36,3 +36,38 @@ export const CURRENT_DRIVER = {
   email: "driver@kissandirect.com",
   role: "DRIVER"
 };
+
+export const LISTINGS = [
+  {
+    id: "LST-001",
+    farmerId: "USR-001",
+    produce: "Tomatoes",
+    quantity: 500,
+    unit: "kg",
+    pricePerKg: 28,
+    location: "Rampur, Gautam Buddha Nagar",
+    status: "Active"
+  },
+  {
+    id: "LST-002",
+    farmerId: "USR-001",
+    produce: "Potatoes",
+    quantity: 800,
+    unit: "kg",
+    pricePerKg: 22,
+    location: "Rampur, Gautam Buddha Nagar",
+    status: "Active"
+  }
+];
+
+export const FARMER_ORDERS = [
+  {
+    id: "ORD-001",
+    farmerId: "USR-001",
+    buyer: "FreshMart",
+    produce: "Tomatoes",
+    quantity: 100,
+    totalAmount: 2800,
+    status: "Confirmed"
+  }
+];
