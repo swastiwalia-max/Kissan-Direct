@@ -1,0 +1,145 @@
+{
+  "version": "1.0.0",
+  "description": "SIH26033 Dual-Sided Agri Price & Demand Prediction Engine",
+  "models": {
+    "farmer_fair_price": {
+      "target": "fair_farmgate_price",
+      "model_type": "xgb",
+      "test_r2": 0.9978,
+      "test_mae": 15.71,
+      "cv_r2": 0.9995,
+      "top_features": [
+        "value_per_quintal_est",
+        "msp_rs_per_quintal",
+        "market_price_rs_per_quintal",
+        "state_avg_market_price_rs_per_quintal",
+        "rolling_price_mean",
+        "lag_msp_1y",
+        "state_avg_yield",
+        "crop",
+        "lag_msp_2y",
+        "year"
+      ]
+    },
+    "farmer_production": {
+      "target": "production",
+      "model_type": "lgb",
+      "test_r2": 0.9899,
+      "test_mae": 12590.16,
+      "cv_r2": -0.4361,
+      "top_features": [
+        "area",
+        "market_value_realization",
+        "area_intensity",
+        "lag_production_1y",
+        "yield",
+        "district",
+        "yield_efficiency",
+        "production_yoy_change",
+        "lag_production_2y",
+        "production_per_area"
+      ]
+    },
+    "farmer_yield": {
+      "target": "yield",
+      "model_type": "lgb",
+      "test_r2": 0.9996,
+      "test_mae": 0.06,
+      "cv_r2": 0.9961,
+      "top_features": [
+        "production_per_area",
+        "yield_efficiency",
+        "state_avg_yield",
+        "yield_yoy_change",
+        "msp_rs_per_quintal",
+        "lag_yield_1y",
+        "state_avg_production",
+        "lag_yield_2y",
+        "district",
+        "production_yoy_change"
+      ]
+    },
+    "buyer_market_price": {
+      "target": "market_price_rs_per_quintal",
+      "model_type": "xgb",
+      "test_r2": 1.0,
+      "test_mae": 0.76,
+      "cv_r2": 0.9996,
+      "top_features": [
+        "state_avg_market_price_rs_per_quintal",
+        "msp_rs_per_quintal",
+        "rolling_price_mean",
+        "lag_msp_2y",
+        "msp_coverage_ratio",
+        "rolling_price_std",
+        "state_avg_production",
+        "lag_market_price_1y",
+        "season",
+        "n_price_reports"
+      ]
+    },
+    "buyer_demand_index": {
+      "target": "demand_proxy_index",
+      "model_type": "lgb",
+      "test_r2": 0.9986,
+      "test_mae": 0.35,
+      "cv_r2": 0.9904,
+      "top_features": [
+        "production",
+        "area",
+        "n_price_reports",
+        "market_value_realization",
+        "price_volatility_cv",
+        "lag_production_1y",
+        "area_intensity",
+        "rolling_price_std",
+        "state_avg_production",
+        "msp_coverage_ratio"
+      ]
+    }
+  },
+  "valid_inputs": {
+    "states": [
+      "Delhi",
+      "Haryana",
+      "Punjab",
+      "Uttar Pradesh"
+    ],
+    "crops": [
+      "Arhar/Tur",
+      "Bajra",
+      "Barley",
+      "Cotton(Lint)",
+      "Gram",
+      "Groundnut",
+      "Jowar",
+      "Maize",
+      "Masoor",
+      "Moong(Green Gram)",
+      "Rapeseed &Mustard",
+      "Rice",
+      "Sesamum",
+      "Soyabean",
+      "Sugarcane",
+      "Sunflower",
+      "Urad",
+      "Wheat"
+    ],
+    "seasons": [
+      "Kharif",
+      "Rabi",
+      "Summer",
+      "Whole Year"
+    ],
+    "year_range": {
+      "min": 2012,
+      "max": 2021
+    }
+  },
+  "endpoints": {
+    "farmer_predict": "/api/v1/predict/farmer",
+    "buyer_predict": "/api/v1/predict/buyer",
+    "margin_check": "/api/v1/margin/check",
+    "health": "/api/v1/health"
+  }
+}
