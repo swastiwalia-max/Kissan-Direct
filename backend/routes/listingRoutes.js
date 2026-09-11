@@ -1,34 +1,28 @@
 const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
 
-dotenv.config();
+const {
+    createListing,
+    getListings,
+    getListingById,
+    updateListing,
+    deleteListing
+} = require("../controllers/listingController");
 
-const app = express();
+const router = express.Router();
 
-app.use(cors());
-app.use(express.json());
+// Create a new listing
+router.post("/", createListing);
 
-// Listing routes
-const listingRoutes = require("./routes/listingRoutes");
+// Get all active listings
+router.get("/", getListings);
 
-app.use("/api/listings", listingRoutes);
+// Get a single listing by ID
+router.get("/:id", getListingById);
 
-app.get("/", (req, res) => {
-    res.json({
-        message: "Kissan-Direct API is running"
-    });
-});
+// Update a listing
+router.put("/:id", updateListing);
 
-app.get("/api/health", (req, res) => {
-    res.json({
-        status: "OK",
-        message: "Backend is healthy"
-    });
-});
+// Cancel a listing
+router.delete("/:id", deleteListing);
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-    console.log(`Kissan-Direct server running on port ${PORT}`);
-});
+module.exports = router;
