@@ -1,73 +1,302 @@
-export const DRIVER_DELIVERIES = [
-  {
-    id: "DEL-001",
-    orderId: "ORD-001",
-    status: "Assigned",
-    pickup: {
-      name: "Ramesh Kumar Farm",
-      location: "Rampur, Gautam Buddha Nagar"
-    },
-    drop: {
-      name: "FreshMart",
-      location: "Sector 18, Noida"
-    },
-    distanceKm: 18,
-    etaMinutes: 45
-  }
+// ============================================================================
+// MOCK DATA — Kissan-Direct (frontend-only prototype, no backend/API)
+// All names, locations and figures below are illustrative placeholder data.
+// ============================================================================
+
+export const CROPS = [
+  "Wheat",
+  "Rice",
+  "Tomato",
+  "Potato",
+  "Onion",
+  "Mustard",
+  "Maize",
+  "Sugarcane",
+  "Cotton",
+  "Toor Dal",
+  "Chana",
+  "Banana",
 ];
 
 export const CURRENT_FARMER = {
-  id: "USR-001",
+  id: "F-1042",
   name: "Ramesh Kumar",
-  email: "farmer@kissandirect.com",
-  role: "FARMER"
+  farmName: "Kumar Krishi Farm",
+  village: "Karnal, Haryana",
+  crops: ["Wheat", "Rice", "Mustard"],
+  phone: "+91 98120 44531",
 };
 
 export const CURRENT_BUYER = {
-  id: "USR-002",
-  name: "FreshMart Buyer",
-  email: "buyer@kissandirect.com",
-  role: "BUYER"
+  id: "B-2231",
+  name: "Ananya Sharma",
+  business: "Sharma Fresh Mart",
+  location: "Karol Bagh, Delhi",
+  buyerType: "Retailer",
+  phone: "+91 99587 21034",
 };
 
 export const CURRENT_DRIVER = {
-  id: "USR-003",
-  name: "Amit Sharma",
-  email: "driver@kissandirect.com",
-  role: "DRIVER"
+  id: "D-3390",
+  name: "Suresh Yadav",
+  vehicleType: "Mini Truck (Tata Ace)",
+  vehicleNumber: "HR-06 AB 4521",
+  phone: "+91 97290 15678",
 };
 
 export const LISTINGS = [
   {
-    id: "LST-001",
-    farmerId: "USR-001",
-    produce: "Tomatoes",
+    id: "L-501",
+    product: "Wheat",
     quantity: 500,
+    quantityRemaining: 320,
     unit: "kg",
     pricePerKg: 28,
-    location: "Rampur, Gautam Buddha Nagar",
-    status: "Active"
+    quality: "Grade A",
+    availableDate: "2026-09-14",
+    status: "Active",
+    farmer: CURRENT_FARMER.name,
+    location: "Karnal, Haryana",
   },
   {
-    id: "LST-002",
-    farmerId: "USR-001",
-    produce: "Potatoes",
+    id: "L-502",
+    product: "Basmati Rice",
     quantity: 800,
+    quantityRemaining: 0,
+    unit: "kg",
+    pricePerKg: 62,
+    quality: "Grade A",
+    availableDate: "2026-09-10",
+    status: "Sold Out",
+    farmer: CURRENT_FARMER.name,
+    location: "Karnal, Haryana",
+  },
+  {
+    id: "L-503",
+    product: "Mustard",
+    quantity: 250,
+    quantityRemaining: 250,
+    unit: "kg",
+    pricePerKg: 52,
+    quality: "Grade B",
+    availableDate: "2026-09-20",
+    status: "Active",
+    farmer: CURRENT_FARMER.name,
+    location: "Karnal, Haryana",
+  },
+  {
+    id: "L-504",
+    product: "Tomato",
+    quantity: 300,
+    quantityRemaining: 140,
+    unit: "kg",
+    pricePerKg: 18,
+    quality: "Grade A",
+    availableDate: "2026-09-12",
+    status: "Active",
+    farmer: "Suman Devi",
+    location: "Nashik, Maharashtra",
+  },
+];
+
+export const MARKETPLACE_PRODUCTS = [
+  ...LISTINGS.filter((l) => l.status === "Active"),
+  {
+    id: "L-505",
+    product: "Potato",
+    quantity: 1000,
+    quantityRemaining: 640,
+    unit: "kg",
+    pricePerKg: 14,
+    quality: "Grade A",
+    availableDate: "2026-09-11",
+    status: "Active",
+    farmer: "Balwinder Singh",
+    location: "Jalandhar, Punjab",
+  },
+  {
+    id: "L-506",
+    product: "Onion",
+    quantity: 700,
+    quantityRemaining: 700,
     unit: "kg",
     pricePerKg: 22,
-    location: "Rampur, Gautam Buddha Nagar",
-    status: "Active"
-  }
+    quality: "Grade B",
+    availableDate: "2026-09-16",
+    status: "Active",
+    farmer: "Vitthal Patil",
+    location: "Nashik, Maharashtra",
+  },
+  {
+    id: "L-507",
+    product: "Maize",
+    quantity: 450,
+    quantityRemaining: 450,
+    unit: "kg",
+    pricePerKg: 19,
+    quality: "Grade A",
+    availableDate: "2026-09-18",
+    status: "Active",
+    farmer: "Devendra Rao",
+    location: "Nizamabad, Telangana",
+  },
+  {
+    id: "L-508",
+    product: "Sugarcane",
+    quantity: 2000,
+    quantityRemaining: 1800,
+    unit: "kg",
+    pricePerKg: 3.6,
+    quality: "Grade A",
+    availableDate: "2026-09-25",
+    status: "Active",
+    farmer: "Harpreet Kaur",
+    location: "Muzaffarnagar, Uttar Pradesh",
+  },
+  {
+    id: "L-509",
+    product: "Cotton",
+    quantity: 600,
+    quantityRemaining: 600,
+    unit: "kg",
+    pricePerKg: 65,
+    quality: "Grade A",
+    availableDate: "2026-09-22",
+    status: "Active",
+    farmer: "Rajendra Deshmukh",
+    location: "Yavatmal, Maharashtra",
+  },
 ];
 
 export const FARMER_ORDERS = [
   {
-    id: "ORD-001",
-    farmerId: "USR-001",
-    buyer: "FreshMart",
-    produce: "Tomatoes",
+    id: "ORD-7841",
+    buyer: "Ananya Sharma — Sharma Fresh Mart",
+    product: "Wheat",
+    quantity: 180,
+    unit: "kg",
+    amount: 5040,
+    date: "2026-09-08",
+    status: "In Transit",
+  },
+  {
+    id: "ORD-7822",
+    buyer: "Karan Mehta — Mehta Traders",
+    product: "Mustard",
+    quantity: 60,
+    unit: "kg",
+    amount: 3120,
+    date: "2026-09-06",
+    status: "Delivered",
+  },
+  {
+    id: "ORD-7799",
+    buyer: "Fresh Basket Retail",
+    product: "Wheat",
     quantity: 100,
-    totalAmount: 2800,
-    status: "Confirmed"
-  }
+    unit: "kg",
+    amount: 2800,
+    date: "2026-09-03",
+    status: "Confirmed",
+  },
+  {
+    id: "ORD-7780",
+    buyer: "Ananya Sharma — Sharma Fresh Mart",
+    product: "Basmati Rice",
+    quantity: 200,
+    unit: "kg",
+    amount: 12400,
+    date: "2026-08-29",
+    status: "Placed",
+  },
 ];
+
+export const BUYER_ORDERS = [
+  {
+    id: "ORD-7841",
+    product: "Wheat",
+    farmer: "Ramesh Kumar — Kumar Krishi Farm",
+    quantity: 180,
+    unit: "kg",
+    amount: 5040,
+    date: "2026-09-08",
+    status: "In Transit",
+    driver: { name: "Suresh Yadav", vehicle: "HR-06 AB 4521", phone: "+91 97290 15678" },
+  },
+  {
+    id: "ORD-7716",
+    product: "Onion",
+    farmer: "Vitthal Patil",
+    quantity: 250,
+    unit: "kg",
+    amount: 5500,
+    date: "2026-08-26",
+    status: "Delivered",
+    driver: { name: "Mahesh Joshi", vehicle: "MH-15 CD 7712", phone: "+91 90210 55432" },
+  },
+  {
+    id: "ORD-7690",
+    product: "Potato",
+    farmer: "Balwinder Singh",
+    quantity: 400,
+    unit: "kg",
+    amount: 5600,
+    date: "2026-08-20",
+    status: "Placed",
+    driver: null,
+  },
+];
+
+export const DRIVER_DELIVERIES = [
+  {
+    id: "DEL-3301",
+    orderId: "ORD-7841",
+    product: "Wheat",
+    quantity: 180,
+    unit: "kg",
+    pickup: { name: "Kumar Krishi Farm", location: "Karnal, Haryana" },
+    drop: { name: "Sharma Fresh Mart", location: "Karol Bagh, Delhi" },
+    farmer: { name: "Ramesh Kumar", phone: "+91 98120 44531" },
+    buyer: { name: "Ananya Sharma", phone: "+91 99587 21034" },
+    distanceKm: 132,
+    etaMinutes: 165,
+    otp: "4821",
+    status: "In Transit",
+  },
+  {
+    id: "DEL-3298",
+    orderId: "ORD-7822",
+    product: "Mustard",
+    quantity: 60,
+    unit: "kg",
+    pickup: { name: "Kumar Krishi Farm", location: "Karnal, Haryana" },
+    drop: { name: "Mehta Traders", location: "Sonipat, Haryana" },
+    farmer: { name: "Ramesh Kumar", phone: "+91 98120 44531" },
+    buyer: { name: "Karan Mehta", phone: "+91 98765 22110" },
+    distanceKm: 46,
+    etaMinutes: 55,
+    otp: "1190",
+    status: "Assigned",
+  },
+  {
+    id: "DEL-3280",
+    orderId: "ORD-7716",
+    product: "Onion",
+    quantity: 250,
+    unit: "kg",
+    pickup: { name: "Patil Farms", location: "Nashik, Maharashtra" },
+    drop: { name: "Fresh Basket Retail", location: "Pune, Maharashtra" },
+    farmer: { name: "Vitthal Patil", phone: "+91 90284 11223" },
+    buyer: { name: "Fresh Basket Retail", phone: "+91 98230 99887" },
+    distanceKm: 187,
+    etaMinutes: 210,
+    otp: "7734",
+    status: "Delivered",
+  },
+];
+
+export const STATUS_FLOW = {
+  order: ["Placed", "Confirmed", "In Transit", "Delivered"],
+  delivery: ["Assigned", "Picked Up", "In Transit", "Delivered"],
+  listing: ["Active", "Sold Out"],
+};
